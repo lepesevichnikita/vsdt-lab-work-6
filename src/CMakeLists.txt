@@ -1,8 +1,12 @@
 qt5_wrap_cpp(lab6QtClasses
+  "${INCLUDE_DIR}/task1.h"
   )
 
 set(lab6Sources
-  main.cpp)
+  main.cpp
+  task1.cpp
+  ${lab6QtClasses}
+  )
 
 qtquick_compiler_add_resources(RESOURCES
   "${RESOURCES_DIR}/resources.qrc"
