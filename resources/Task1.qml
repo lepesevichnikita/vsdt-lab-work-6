@@ -49,12 +49,14 @@ ColumnLayout {
           property int column: index
           Layout.fillWidth: true
           Layout.fillHeight: true
-          text: numbers[index]
+          text: numbers[index].toFixed(2)
+          readOnly: true
+          selectByMouse: true
+
           onEditingFinished: {
             var changedMatrix = task1.matrix
             changedMatrix[parent.row][column] = parseFloat(text)
             task1.matrix = changedMatrix
-            print(parent.row, column)
           }
         }
       }

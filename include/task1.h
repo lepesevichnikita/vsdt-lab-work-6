@@ -9,6 +9,7 @@
 #include <vector>
 #include <algorithm>
 #include <functional>
+#include <cmath>
 
 class Task1: public QObject {
   Q_OBJECT
@@ -49,6 +50,10 @@ class Task1: public QObject {
     static QList<QList<qreal>> initMatrix();
     static QList<QList<qreal>> initMatrix(const QVariant&);
     static QVariantList initMatrix(const QList<QList<qreal>>&);
+    static inline double calculateItemOfMatrixByPos(const double &i, const double &j) {
+      double result = std::pow(std::pow(std::cos(i), 2)/(3.5 - 0.5*j), std::sin(j)) - std::exp(i/j);
+      return result;
+    }
 
     QList<QList<qreal>> matrix_;
 
