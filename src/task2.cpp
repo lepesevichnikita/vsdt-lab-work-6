@@ -75,7 +75,7 @@ void Task2::recalculateImage() {
     for(uint j = 0; j < image_.height(); j++) {
       QColor pixel = image_.pixelColor(i, j);
       int lightness = ((pixel.lightness() > maxDepth_) ? 255 :
-          (pixel.lightness() < minDepth_) ? 0 : lightness);
+          (pixel.lightness() < minDepth_) ? 0 : pixel.lightness());
       pixel.setHsl(pixel.hue(), lightness, pixel.saturation(), pixel.alpha());
       image_.setPixelColor(i, j, pixel);
     }

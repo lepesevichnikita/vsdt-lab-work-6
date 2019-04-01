@@ -1,12 +1,14 @@
 qt5_wrap_cpp(lab6QtClasses
         "${INCLUDE_DIR}/task1.h"
         "${INCLUDE_DIR}/task2.h"
+        "${INCLUDE_DIR}/task3.h"
         )
 
 set(lab6Sources
         main.cpp
         task1.cpp
         task2.cpp
+        task3.cpp
         ${lab6QtClasses}
         )
 

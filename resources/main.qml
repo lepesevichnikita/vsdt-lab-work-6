@@ -3,8 +3,8 @@ import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 
 ApplicationWindow {
-  minimumWidth: 640
-  minimumHeight: 320
+  minimumWidth: 1024
+  minimumHeight: 720
 
   title: qsTr("Лабораторная работа №6")
   visible: true
