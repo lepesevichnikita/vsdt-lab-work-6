@@ -30,25 +30,25 @@ Q_OBJECT
                    READ
                        maxLightness
                    WRITE
-                       setMaxDepth
+                       setMaxLightness
                    NOTIFY
-                   depthChanged)
+                   lightnessChanged)
 
     Q_PROPERTY(uchar minLightness
                    READ
                        minLightness
                    WRITE
-                       setMinDepth
+                       setMinLightness
                    NOTIFY
-                   depthChanged)
+                   lightnessChanged)
 public:
     explicit Task2(QObject *parent = nullptr);
 
     uchar maxLightness();
-    void setMaxDepth(const uchar &);
+    void setMaxLightness(const uchar &);
 
     uchar minLightness();
-    void setMinDepth(const uchar &);
+    void setMinLightness(const uchar &);
 
     QString imageAsBase64();
 
@@ -58,7 +58,7 @@ public:
 signals:
     void imageNameChanged();
     void imageAsBase64Changed();
-    void depthChanged();
+    void lightnessChanged();
 
 private:
     QUrl imageName_;

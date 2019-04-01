@@ -13,26 +13,6 @@ ColumnLayout {
     id: task1
   }
 
-  Label {
-    Layout.fillWidth: true
-    Layout.fillHeight: true
-    text: qsTr("Индекс вектора с наименьшей суммой элементов ") + (task1.indexOfVectorWithMaxSumOfItems + 1)
-  }
-
-  RowLayout {
-      Label {
-        Layout.fillWidth: true
-        Layout.fillHeight: true
-        text: qsTr("Произведение ненулевых элементов данного вектора ")
-      }
-      TextField {
-        Layout.fillWidth: true
-        Layout.fillHeight: true
-        text: task1.productOfNonZeroItems
-        readOnly: true
-        selectByMouse: true
-      }
-  }
 
   Repeater {
     model: task1.matrix.length
@@ -53,5 +33,23 @@ ColumnLayout {
         }
       }
     }
+  }
+
+  RowLayout {
+      Label {
+        Layout.fillWidth: true
+        text: qsTr("Индекс вектора с наименьшей суммой элементов ") + (task1.indexOfVectorWithMaxSumOfItems + 1)
+      }
+
+      Label {
+        Layout.fillWidth: true
+        text: qsTr("Произведение ненулевых элементов данного вектора ")
+      }
+      TextField {
+        Layout.fillWidth: true
+        text: task1.productOfNonZeroItems
+        readOnly: true
+        selectByMouse: true
+      }
   }
 }

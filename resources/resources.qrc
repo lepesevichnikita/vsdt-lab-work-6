@@ -4,5 +4,6 @@
     <file>Task1.qml</file>
     <file>Task2.qml</file>
     <file>Task3.qml</file>
+    <file>Task4.qml</file>
   </qresource>
 </RCC>

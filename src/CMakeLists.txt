@@ -2,6 +2,7 @@ qt5_wrap_cpp(lab6QtClasses
         "${INCLUDE_DIR}/task1.h"
         "${INCLUDE_DIR}/task2.h"
         "${INCLUDE_DIR}/task3.h"
+        "${INCLUDE_DIR}/task4.h"
         )
 
 set(lab6Sources
@@ -9,6 +10,7 @@ set(lab6Sources
         task1.cpp
         task2.cpp
         task3.cpp
+        task4.cpp
         ${lab6QtClasses}
         )
 
@@ -27,8 +29,7 @@ else()
   set(BINARY_NAME ${EXECUTABLE_NAME})
   add_executable(${EXECUTABLE_NAME}
           ${lab6Sources}
-          ${RESOURCES}
-          )
+          ${RESOURCES})
 endif()
 
 qt5_use_modules(${BINARY_NAME} Core Widgets Gui Quick Qml)

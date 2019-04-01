@@ -14,7 +14,7 @@ ApplicationWindow {
     width: parent.width
 
     Repeater {
-      model: ["Первое", "Второе", "Третье"]
+      model: ["Первое", "Второе", "Третье", "Четвёртое"]
 
       TabButton {
         text: [qsTr(modelData), qsTr("задание")].join(" ")
@@ -36,6 +36,10 @@ ApplicationWindow {
 
     Item {
       Task3 {}
+    }
+
+    Item {
+      Task4 {}
     }
   }
 

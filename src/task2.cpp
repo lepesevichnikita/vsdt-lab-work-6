@@ -4,7 +4,7 @@ Task2::Task2(QObject *parent)
   : QObject(parent), minLightness_(0), maxLightness_(254)
 {
   QObject::connect(this, SIGNAL(imageNameChanged()), this, SLOT(reloadImage()));
-  QObject::connect(this, SIGNAL(depthChanged()), this, SLOT(recalculateImage()));
+  QObject::connect(this, SIGNAL(lightnessChanged()), this, SLOT(recalculateImage()));
 }
 
 QUrl Task2::imageName()
@@ -49,20 +49,20 @@ QImage Task2::loadImage(const QString &path)
   return QImage();
 }
 
-void Task2::setMaxDepth(const uchar &maxLightness)
+void Task2::setMaxLightness(const uchar &maxLightness)
 {
   if (maxLightness == maxLightness_)
     return;
   maxLightness_ = maxLightness;
-  emit depthChanged();
+  emit lightnessChanged();
 }
 
-void Task2::setMinDepth(const uchar &minLightness)
+void Task2::setMinLightness(const uchar &minLightness)
 {
   if (minLightness == minLightness_)
     return;
   minLightness_ = minLightness;
-  emit depthChanged();
+  emit lightnessChanged();
 }
 
 uchar Task2::minLightness()
@@ -76,7 +76,8 @@ void Task2::recalculateImage() {
       QColor pixel = image_.pixelColor(i, j);
       int lightness = pixel.lightness();
       if (lightness > maxLightness_) lightness = 255;
-      else if (lightness < minLightness_) lightness = 0;
+      if (lightness < minLightness_) lightness = 0;
+      pixel.setHsl(pixel.hslHue(), pixel.hslSaturation(), lightness, pixel.alpha());
       image_.setPixelColor(i, j, pixel);
     }
   emit imageAsBase64Changed();

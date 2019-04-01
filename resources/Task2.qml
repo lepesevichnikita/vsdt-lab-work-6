@@ -1,4 +1,4 @@
-import QtQuick 2.7
+import QtQuick 2.9
 import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 import QtQuick.Dialogs 1.3
@@ -35,9 +35,9 @@ ColumnLayout {
       }
       TextField {
         Layout.fillWidth: true
-        text: task.minDepth
+        text: task.minLightness
         onEditingFinished: {
-          task.minDepth = parseInt(text) || 0
+          task.minLightness = parseInt(text) || 0
         }
       }
     }
@@ -48,9 +48,9 @@ ColumnLayout {
       }
       TextField {
         Layout.fillWidth: true
-        text: task.maxDepth
+        text: task.maxLightness
         onEditingFinished: {
-          task.maxDepth = parseInt(text) || 0
+          task.maxLightness = parseInt(text) || 0
         }
       }
     }
