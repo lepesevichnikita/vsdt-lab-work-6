@@ -1,7 +1,7 @@
 #include "task2.h"
 
 Task2::Task2(QObject *parent)
-  : QObject(parent), minDepth_(0), maxDepth_(254)
+  : QObject(parent), minLightness_(0), maxLightness_(254)
 {
   QObject::connect(this, SIGNAL(imageNameChanged()), this, SLOT(reloadImage()));
   QObject::connect(this, SIGNAL(depthChanged()), this, SLOT(recalculateImage()));
@@ -12,9 +12,9 @@ QUrl Task2::imageName()
   return imageName_;
 }
 
-uchar Task2::maxDepth()
+uchar Task2::maxLightness()
 {
-  return maxDepth_;
+  return maxLightness_;
 }
 
 QString Task2::imageAsBase64()
@@ -49,34 +49,34 @@ QImage Task2::loadImage(const QString &path)
   return QImage();
 }
 
-void Task2::setMaxDepth(const uchar &maxDepth)
+void Task2::setMaxDepth(const uchar &maxLightness)
 {
-  if (maxDepth == maxDepth_)
+  if (maxLightness == maxLightness_)
     return;
-  maxDepth_ = maxDepth;
+  maxLightness_ = maxLightness;
   emit depthChanged();
 }
 
-void Task2::setMinDepth(const uchar &minDepth)
+void Task2::setMinDepth(const uchar &minLightness)
 {
-  if (minDepth == minDepth_)
+  if (minLightness == minLightness_)
     return;
-  minDepth_ = minDepth;
+  minLightness_ = minLightness;
   emit depthChanged();
 }
 
-uchar Task2::minDepth()
+uchar Task2::minLightness()
 {
-  return minDepth_;
+  return minLightness_;
 }
 
 void Task2::recalculateImage() {
   for(uint i = 0; i < image_.width(); i++)
     for(uint j = 0; j < image_.height(); j++) {
       QColor pixel = image_.pixelColor(i, j);
-      int lightness = ((pixel.lightness() > maxDepth_) ? 255 :
-          (pixel.lightness() < minDepth_) ? 0 : pixel.lightness());
-      pixel.setHsl(pixel.hue(), lightness, pixel.saturation(), pixel.alpha());
+      int lightness = pixel.lightness();
+      if (lightness > maxLightness_) lightness = 255;
+      else if (lightness < minLightness_) lightness = 0;
       image_.setPixelColor(i, j, pixel);
     }
   emit imageAsBase64Changed();

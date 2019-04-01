@@ -26,17 +26,17 @@ Q_OBJECT
                    NOTIFY
                    imageAsBase64Changed)
 
-    Q_PROPERTY(uchar maxDepth
+    Q_PROPERTY(uchar maxLightness
                    READ
-                       maxDepth
+                       maxLightness
                    WRITE
                        setMaxDepth
                    NOTIFY
                    depthChanged)
 
-    Q_PROPERTY(uchar minDepth
+    Q_PROPERTY(uchar minLightness
                    READ
-                       minDepth
+                       minLightness
                    WRITE
                        setMinDepth
                    NOTIFY
@@ -44,10 +44,10 @@ Q_OBJECT
 public:
     explicit Task2(QObject *parent = nullptr);
 
-    uchar maxDepth();
+    uchar maxLightness();
     void setMaxDepth(const uchar &);
 
-    uchar minDepth();
+    uchar minLightness();
     void setMinDepth(const uchar &);
 
     QString imageAsBase64();
@@ -63,7 +63,7 @@ signals:
 private:
     QUrl imageName_;
     QImage image_;
-    uchar maxDepth_, minDepth_;
+    uchar maxLightness_, minLightness_;
 
 private slots:
     void reloadImage();
