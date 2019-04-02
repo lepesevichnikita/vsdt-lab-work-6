@@ -53,7 +53,7 @@ qreal Task1::productOfNonZeroItems()
       vectorWithMaxSumOfItems.end(),
       std::back_inserter(endVector),
       [](qreal x)
-      { return int(x) != 0; });
+      { return x != 0.0; });
   qreal result = std::accumulate(endVector.begin(), endVector.end(), 1, std::multiplies<qreal>());
   return result;
 }

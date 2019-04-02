@@ -47,7 +47,7 @@ ColumnLayout {
       }
       TextField {
         Layout.fillWidth: true
-        text: task1.productOfNonZeroItems
+        text: task1.productOfNonZeroItems.toFixed(2)
         readOnly: true
         selectByMouse: true
       }
