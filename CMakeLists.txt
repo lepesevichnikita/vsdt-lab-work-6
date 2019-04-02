@@ -18,4 +18,3 @@ find_package(Qt5QuickCompiler REQUIRED)
 
 add_subdirectory(src build)
 
-include_directories(${PROJECT_BINARY_DIR})
